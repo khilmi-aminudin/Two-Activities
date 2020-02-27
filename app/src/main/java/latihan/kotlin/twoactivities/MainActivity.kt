@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,23 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val EXTRA_MESSAGE = "MainActivity_Message"
-
-        val mMessageEditText = findViewById<EditText>(R.id.editText_main)
-
         val btnSend = findViewById<Button>(R.id.button_main)
         btnSend.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            var message = mMessageEditText.text.toString()
+            val message: String? = editText_main.text.toString()
+            Toast.makeText(this,"$message sended",Toast.LENGTH_SHORT).show()
 
-            intent.putExtra(EXTRA_MESSAGE, message)
+            val intent = Intent(this,SecondActivity::class.java)
+            intent.putExtra("key",message)
             startActivity(intent)
-
-            val LOG_TAG: String? = MainActivity::class.java.simpleName
-            Log.d(LOG_TAG, "Button Clicked")
         }
-
     }
-
-
 }
