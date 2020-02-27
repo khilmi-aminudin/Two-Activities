@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
         val btnSend = findViewById<Button>(R.id.button_main)
         btnSend.setOnClickListener {
             val message: String? = editText_main.text.toString()
-            Toast.makeText(this,"$message sended",Toast.LENGTH_SHORT).show()
-
             val intent = Intent(this,SecondActivity::class.java)
             intent.putExtra("key",message)
             startActivity(intent)

@@ -16,8 +16,6 @@ class SecondActivity : AppCompatActivity() {
         val bundle : Bundle? = intent.extras
         val msg = bundle?.getString("key")
 
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
-
         text_message.text = msg
 
 
